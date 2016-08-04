@@ -1,0 +1,15 @@
+<h1>STOCK AUTHORITY ランキング情報</h1>
+<h2><%= @h2_title %></h2>
+<table>
+<thead>
+<tr><th>順位</th><th>企業名</th><th>証券コード</th><th>株価</th><th>前日比</th><th><%= @col_title %></th></tr>
+</thead>
+<tbody>
+<% @ranking.each_with_index do |ranking,i| %>
+<%i= i+1 %>
+<tr><th><%=i%></th><td><%= link_to ranking.name,stock_path + "/" + ranking.code.to_s %></td><td><%=ranking.code%></td><td>
+<%=ranking.price%></td><td><%=ranking.before_ratio1%></td><td><%=ranking.before_ratio2 %></td></tr>
+<% end %>
+</tbody>
+</table>
+

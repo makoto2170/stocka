@@ -1,0 +1,45 @@
+<h1><%= @day_to_day2_show.name %>：詳細情報</h1>
+<table id='stock-info'>
+	<tr>
+	 <th colspan='3'>企業名</th><th>コード</th>
+	</tr>
+	<tr>
+	 <td colspan='3'><%= @day_to_day2_show.name %></td><td><%= @day_to_day2_show.code %></td>
+	</tr>
+	<tr>
+	 <th colspan='2'>取引所</th><th colspan='2'>33業種コード</th>
+	</tr>
+	<tr>
+	 <td colspan='2'><%= @day_to_day2_show.m_place %></td><td colspan='2'><%= @day_to_day2_show.name33 %></td>
+	</tr>
+	<tr>
+	 <th>日付</th><th colspan='3'>現値(15分遅れ)</th>
+	</tr>
+	<tr>
+	 <td><%= @day_to_day2_show.date %></td><td colspan='3'><%= @day_to_day2_show.price %></td>
+	</tr>
+	<tr>
+	 <th>前日値</th><th>始値</th><th>高値</th><th>安値</th>
+	</tr>
+	<tr>
+	 <td><%= @day_to_day2_show.price_b %></td><td><%= @day_to_day2_show.price_s %></td><td><%= @day_to_day2_show.price_h %></td><td><%= @day_to_day2_show.price_l %></td>
+	</tr>
+	<tr>
+	 <th colspan='2'>前日比</th><th colspan='2'>前日比(%)</th>
+	</tr>
+	<tr>
+	 <td colspan='2'><%= @day_to_day2_show.before_ratio1 %></td><td colspan='2'><%= @day_to_day2_show.before_ratio2 %></td>
+	</tr>
+	<tr>
+	 <th>出来高</th><th>売買代金</th><th>時価総額</th><th></th>
+	</tr>
+	<tr>
+	 <td><%= @day_to_day2_show.volume %></td><td><%= @day_to_day2_show.t_value %></td><td><%= @day_to_day2_show.m_capi %></td><td></td>
+	</tr>
+</table>
+
+
+<h1><%= @day_to_day2_show.name %>：直近の決算</h1>
+#評価
+<h1><%= @day_to_day2_show.name %>：コメント</h1>
+#コメントをどうぞ

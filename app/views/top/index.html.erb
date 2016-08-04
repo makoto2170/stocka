@@ -1,0 +1,68 @@
+<h1>STOCK AUTHORITY TOP</h1>
+<h2>ニュースヘッドライン</h2>
+<ul>
+<% @entries.first(7).each do |entries| %>
+  <li>
+  <%= link_to entries.title,entries.url,:target => "_blank" %>
+  </li>
+<% end %>
+</ul>
+<h2>決算速報</h2>
+<p>coming soon</p>
+<h2>株式ランキング</h2>
+<h3>値上がりランキング</h3>
+<table>
+<thead>
+<tr><th>順位</th><th>企業名</th><th>証券コード</th><th>株価</th><th>前日比</th><th>値上がり率</th></tr>
+</thead>
+<tbody>
+<% @ranking_ratio_up.each_with_index do |ranking,i| %>
+<%i= i+1 %>
+<tr><th><%=i%></th><td><%= link_to ranking.name,stock_path + "/" + ranking.code.to_s %></td><td><%=ranking.code%></td><td>
+<%=ranking.price%></td><td><%=ranking.before_ratio1%></td><td><%=ranking.before_ratio2%></td></tr>
+<% end %>
+</tbody>
+</table>
+<p><a><%= link_to "more",ranking_path + "/ranking_up" %></p>
+<h3>値下がりランキング</h3>
+<table>
+<thead>
+<tr><th>順位</th><th>企業名</th><th>証券コード</th><th>株価</th><th>前日比</th><th>値下がり率</th></tr>
+</thead>
+<tbody>
+<% @ranking_ratio_down.each_with_index do |ranking,i| %>
+<%i= i+1 %>
+<tr><th><%=i%></th><td><%= link_to ranking.name,stock_path + "/" + ranking.code.to_s %></td><td><%=ranking.code%></td><td>
+<%=ranking.price%></td><td><%=ranking.before_ratio1%></td><td><%=ranking.before_ratio2%></td></tr>
+<% end %>
+</tbody>
+</table>
+<p><a><%= link_to "more", ranking_path + "/ranking_down" %></p>
+<h3>出来高ランキング</h3>
+<table>
+<thead>
+<tr><th>順位</th><th>企業名</th><th>証券コード</th><th>株価</th><th>前日比</th><th>出来高</th></tr>
+</thead>
+<tbody>
+<% @ranking_volume.each_with_index do |ranking,i| %>
+<%i= i+1 %>
+<tr><th><%=i%></th><td><%=link_to ranking.name,stock_path + "/" + ranking.code.to_s %></td><td><%=ranking.code%></td><td>
+<%=ranking.price%></td><td><%=ranking.before_ratio1%></td><td><%=ranking.volume%></td></tr>
+<% end %>
+</tbody>
+</table>
+<p><a><%= link_to "more","ranking/volume" %></p>
+<h3>売買代金ランキング</h3>
+<table>
+<thead>
+<tr><th>順位</th><th>企業名</th><th>証券コード</th><th>株価</th><th>前日比</th><th>売買代金</th></tr>
+</thead>
+<tbody>
+<% @ranking_t_value.each_with_index do |ranking,i| %>
+<%i= i+1 %>
+<tr><th><%=i%></th><td><%=link_to ranking.name,stock_path + "/" + ranking.code.to_s %></td><td><%=ranking.code%></td><td>
+<%=ranking.price%></td><td><%=ranking.before_ratio1%></td><td><%=ranking.t_value%></td></tr>
+<% end %>
+</tbody>
+</table>
+<p><a><%= link_to "more", "/ranking/t_value" %></p>

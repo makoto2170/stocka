@@ -1,0 +1,6 @@
+<h1>industry index</h1>
+<% @gyousyu33master.each do |gyousyu33master| %>
+
+<li><%= link_to gyousyu33master.name  ,'#'%></li>
+
+<% end %>

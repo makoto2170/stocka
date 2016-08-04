@@ -1,0 +1,46 @@
+<h1>STOCK AUTHORITY 株価情報　詳細情報</h1>
+<h2><%= @stock_show.name %></h2>
+<table id='stock-info'>
+	<tr>
+	 <th colspan='3'>企業名</th><th>コード</th>
+	</tr>
+	<tr>
+	 <td colspan='3'><%= @stock_show.name %></td><td><%= @stock_show.code %></td>
+	</tr>
+	<tr>
+	 <th colspan='2'>取引所</th><th colspan='2'>33業種コード</th>
+	</tr>
+	<tr>
+	 <td colspan='2'><%= @stock_show.m_place %></td><td colspan='2'><%= @stock_show.name33 %></td>
+	</tr>
+	<tr>
+	 <th>日付</th><th colspan='3'>現値(15分遅れ)</th>
+	</tr>
+	<tr>
+	 <td><%= @stock_show.date %></td><td colspan='3'><%= @stock_show.price %></td>
+	</tr>
+	<tr>
+	 <th>前日値</th><th>始値</th><th>高値</th><th>安値</th>
+	</tr>
+	<tr>
+	 <td><%= @stock_show.price_b %></td><td><%= @stock_show.price_s %></td><td><%= @stock_show.price_h %></td><td><%= @stock_show.price_l %></td>
+	</tr>
+	<tr>
+	 <th colspan='2'>前日比</th><th colspan='2'>前日比(%)</th>
+	</tr>
+	<tr>
+	 <td colspan='2'><%= @stock_show.before_ratio1 %></td><td colspan='2'><%= @stock_show.before_ratio2 %></td>
+	</tr>
+	<tr>
+	 <th>出来高</th><th>売買代金</th><th>時価総額</th><th></th>
+	</tr>
+	<tr>
+	 <td><%= @stock_show.volume %></td><td><%= @stock_show.t_value %></td><td><%= @stock_show.m_capi %></td><td></td>
+	</tr>
+</table>
+
+
+<h2><%= @stock_show.name %>：直近の決算</h2>
+<p>coming soon</p>
+<h2><%= @stock_show.name %>：コメント</h2>
+<p>coming soon</p>

@@ -1,0 +1,21 @@
+<h1>STOCK AUTOHORITY 株価情報 メニュー</h1>
+
+<h2>業種一覧</h2>
+<div>
+  <ul>
+    <% @gyousyu33_master.each do |gyousyu33| %>
+
+        <li><%= link_to gyousyu33.name33,industry_path + "/" + gyousyu33.code33.to_s %></li>
+    <% end %>
+  </ul>
+</div>
+<h2>企業コード一覧</h2>
+<div>
+  <ul>
+    <% 1.upto(9) do |i| %>
+      <li>
+	<%= link_to i.to_s + '000番台～',code_path + "/" + i.to_s %>
+      </li>
+    <% end %>
+  </ul>
+</div>

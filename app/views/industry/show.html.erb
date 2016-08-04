@@ -1,0 +1,10 @@
+<h1>STOCK AUTHORITY 業種別一覧：<%= @industry_name.name33 %></h1>
+
+<ul>
+<% @industry.each do |industry| %>
+
+<li><%= link_to industry.name,stock_path + "/" + industry.code.to_s %></li>
+
+<% end %>
+</ul>
+

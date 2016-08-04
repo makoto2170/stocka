@@ -1,0 +1,10 @@
+<h1>STOCK AUTHORITY 証券コード別一覧：<%= @id %>000番台</h1>
+
+<ul>
+<% @code_show.each do |code| %>
+
+<li><%=code.code%> - <%= link_to code.name  ,stock_path + "/" + code.code.to_s%></li>
+
+<% end %>
+</ul>
+

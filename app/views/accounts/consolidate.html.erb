@@ -1,0 +1,116 @@
+<%= notice %>
+<h1><%= @day_to_day2.name %>：決算情報</h1>
+<h2>連結決算</h2>
+<table>
+  <tr>
+    <th>決算期</th>
+    <% @final_accounts.each do |final_account| %>
+    <td><%= final_account.current_fiscal_year %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <th>会計基準</th>
+    <% @final_accounts.each do |final_account| %>
+    <td><%= final_account.accounting_standards %></td>
+    <% end %>
+  </tr>
+  <th>売上高</th>
+    <% @final_accounts.each do |final_account| %>
+    <td><%= final_account.net_sales.present? ? number_to_currency_with_truncate_under_million(final_account.net_sales) : "" %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <th>営業利益</th>
+    <% @final_accounts.each do |final_account| %>
+    <td><%= final_account.operating_income.present? ? number_to_currency_with_truncate_under_million(final_account.operating_income) : "" %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <th>経常利益</th>
+    <% @final_accounts.each do |final_account| %>
+    <td><%= final_account.ordinary_income.present? ? number_to_currency_with_truncate_under_million(final_account.ordinary_income) : "" %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <th>当期利益</th>
+    <% @final_accounts.each do |final_account| %>
+    <td><%= final_account.net_income.present? ? number_to_currency_with_truncate_under_million(final_account.net_income) : "" %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <th>EPS（一株当たり利益）</th>
+    <% @final_accounts.each do |final_account| %>
+    <td><%= final_account.earnings_per_share_summary.present? ? number_to_currency(final_account.earnings_per_share_summary, unit: '円', precision: 0, format: '%n%u') : "" %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <th>調整一株当たり利益</th>
+    <% @final_accounts.each do |final_account| %>
+    <td><%= final_account.diluted_earnings_per_share_summary.present? ? number_to_currency(final_account.diluted_earnings_per_share_summary, unit: '円', precision: 0, format: '%n%u') : "" %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <th>BPS（一株当たり純資産）</th>
+    <% @final_accounts.each do |final_account| %>
+    <td><%= final_account.net_assets_per_share_summary.present? ? number_to_currency(final_account.net_assets_per_share_summary, unit: '円', precision: 0, format: '%n%u') : "" %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <th>発行済み株式総数</th>
+    <% @final_accounts.each do |final_account| %>
+    <td><%= final_account.total_number_of_issued_shares_summary.present? ? number_with_delimiter(final_account.total_number_of_issued_shares_summary) + "株" : "" %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <th>総資産</th>
+    <% @final_accounts.each do |final_account| %>
+    <td><%= final_account.total_assets_summary.present? ? number_to_currency_with_truncate_under_million(final_account.total_assets_summary) : "" %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <th>自己資本</th>
+    <% @final_accounts.each do |final_account| %>
+    <td></td>
+    <% end %>
+  </tr>
+  <tr>
+    <th>資本金</th>
+    <% @final_accounts.each do |final_account| %>
+    <td><%= final_account.capital_stock_summary.present? ? number_to_currency_with_truncate_under_million(final_account.capital_stock_summary) : "" %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <th>有利子負債</th>
+    <% @final_accounts.each do |final_account| %>
+    <td></td>
+    <% end %>
+  </tr>
+  <tr>
+    <th>自己資本比率（株主資本比率）</th>
+    <% @final_accounts.each do |final_account| %>
+    <td><%= final_account.equity_to_asset_ratio_summary.present? ? number_to_percentage(final_account.equity_to_asset_ratio_summary * 100, :strip_insignificant_zeros => true) : "" %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <th>ROA（総資産利益率）</th>
+    <% @final_accounts.each do |final_account| %>
+    <td><%= final_account.rate_of_return_on_assets_summary.present? ? number_to_percentage(final_account.rate_of_return_on_assets_summary * 100, :strip_insignificant_zeros => true) : "" %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <th>ROE（自己資本利益率）</th>
+    <% @final_accounts.each do |final_account| %>
+    <td><%= final_account.rate_of_return_on_equity_summary.present? ? number_to_percentage(final_account.rate_of_return_on_equity_summary * 100, :strip_insignificant_zeros => true) : "" %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <th>総資産経常利益率</th>
+    <% @final_accounts.each do |final_account| %>
+    <td><%= final_account.rate_of_ordinary_income_return_on_assets_summary.present? ? number_to_percentage(final_account.rate_of_ordinary_income_return_on_assets_summary * 100, :strip_insignificant_zeros => true) : "" %></td>
+    <% end %>
+  </tr>
+</table>
+<div>
+<a href="independent">単独決算を見る</a>
+</div>
+<%= link_to '一覧に戻る', day_to_day2s_path %>
